@@ -6,5 +6,12 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        {% if serverAddress is defined %}
+        window.serverAddress = '{{ serverAddress|e('js') }}';
+        {% else %}
+        window.serverAddress = null;
+        {% endif %}
+    </script>
     {{ encore_entry_script_tags('products') }}
 {% endblock %}
